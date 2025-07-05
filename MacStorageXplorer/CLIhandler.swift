@@ -1,10 +1,7 @@
 //
-//  main.swift
+//  CLIhandler.swift
 //  MacStorageXplorer
 //
 //  Created by Moddeeeeeeep on 05.07.2025.
 //
 
-import Foundation
-Int lol = 0
-print("Hello, World!")
