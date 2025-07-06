@@ -29,10 +29,10 @@ class FileScanner
                 let fileInfo = try getFileInfromation(url: itemURL)
                 FileInfosArray.append(fileInfo)
                 
-                return FileInfosArray.sorted {$0.size > $1.size}
+                
                 
             }
-            
+            return FileInfosArray.sorted {$0.size > $1.size}
             
         }catch {os_log("Error scanning directory: %{public}@", log: log, type: .error, error.localizedDescription)
             return []}
