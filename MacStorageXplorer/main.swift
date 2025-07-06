@@ -51,13 +51,14 @@ while(!shouldExit)
             } else {
                 print("Введите путь к директории для сканирования (нажмите Enter для текущей директории):")
                 let input = readLine() ?? ""
-                path = input.isEmpty ? "/Users" : input
+                path = input.isEmpty ? "/Users/Documents" : input
             }
 
         // Проверяем существование пути
             if !FileManager.default.fileExists(atPath: path) {
                 print("Ошибка: Директория не найдена по пути \(path)")
-                exit(1)
+                //exit(1)
+                continue
             }
 
             print("Сканирование директории: \(path)")

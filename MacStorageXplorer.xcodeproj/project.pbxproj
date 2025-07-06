@@ -19,6 +19,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		81A812B62E1ACD0400F12DBC /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		81BA33512E1914B400BC4108 /* MacStorageXplorer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MacStorageXplorer; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -46,6 +47,7 @@
 			children = (
 				81BA33532E1914B400BC4108 /* MacStorageXplorer */,
 				81BA33522E1914B400BC4108 /* Products */,
+				81A812B62E1ACD0400F12DBC /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
