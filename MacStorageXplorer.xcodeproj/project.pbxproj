@@ -20,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		81A812B62E1ACD0400F12DBC /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		81A812B82E1AEFD700F12DBC /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		81BA33512E1914B400BC4108 /* MacStorageXplorer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MacStorageXplorer; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -45,6 +46,7 @@
 		81BA33482E1914B400BC4108 = {
 			isa = PBXGroup;
 			children = (
+				81A812B82E1AEFD700F12DBC /* LICENSE.txt */,
 				81BA33532E1914B400BC4108 /* MacStorageXplorer */,
 				81BA33522E1914B400BC4108 /* Products */,
 				81A812B62E1ACD0400F12DBC /* README.md */,
