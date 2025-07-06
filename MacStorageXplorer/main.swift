@@ -31,35 +31,62 @@ func colorForSize(_ size: Int64) -> String {
 // Сброс цвета
 let resetColor = "\u{001B}[0m"
 
-// Получаем путь из аргументов командной строки или запрашиваем у пользователя
-let path: String
-if CommandLine.arguments.count > 1 {
-    path = CommandLine.arguments[1]
-} else {
-    print("Введите путь к директории для сканирования (нажмите Enter для текущей директории):")
-    let input = readLine() ?? ""
-    path = input.isEmpty ? FileManager.default.currentDirectoryPath : input
-}
 
-// Проверяем существование пути
-if !FileManager.default.fileExists(atPath: path) {
-    print("Ошибка: Директория не найдена по пути \(path)")
-    exit(1)
-}
+var shouldExit = false
 
-print("Сканирование директории: \(path)")
-
-// Сканируем директорию
-let scanner = FileScanner()
-let fileInfos = scanner.scanDirectory(atPath: path)
-
-// Выводим результаты
-print("\nРезультаты (отсортированы по размеру):")
-print("-------------------------------------------")
-for fileInfo in fileInfos {
-    let sizeString = formatFileSize(fileInfo.size)
-    let colorCode = colorForSize(fileInfo.size)
-    let icon = fileInfo.isDirectory ? "📁" : "📄"
+while(!shouldExit)
+{
+    print("\nВыберите действие:")
+    print("1. Сканировать директорию")
+    print("2. Выход")
+    print("Введите номер опции: ", terminator: "")
     
-    print("\(icon) \(fileInfo.name.padding(toLength: 40, withPad: " ", startingAt: 0)) \(colorCode)\(sizeString)\(resetColor)")
+    let choice = readLine() ?? ""
+    
+    switch choice{
+    case "1":
+            let path: String
+            if CommandLine.arguments.count > 1 {
+                path = CommandLine.arguments[1]
+            } else {
+                print("Введите путь к директории для сканирования (нажмите Enter для текущей директории):")
+                let input = readLine() ?? ""
+                path = input.isEmpty ? "/Users" : input
+            }
+
+        // Проверяем существование пути
+            if !FileManager.default.fileExists(atPath: path) {
+                print("Ошибка: Директория не найдена по пути \(path)")
+                exit(1)
+            }
+
+            print("Сканирование директории: \(path)")
+
+        // Сканируем директорию
+            let scanner = FileScanner()
+            let fileInfos = scanner.scanDirectory(atPath: path)
+
+        // Выводим результаты
+            print("\nРезультаты (отсортированы по размеру):")
+            print("-------------------------------------------")
+            for fileInfo in fileInfos {
+                let sizeString = formatFileSize(fileInfo.size)
+                let colorCode = colorForSize(fileInfo.size)
+                let icon = fileInfo.isDirectory ? "📁" : "📄"
+            
+                print("\(icon) \(fileInfo.name.padding(toLength: 40, withPad: " ", startingAt: 0)) \(colorCode)\(sizeString)\(resetColor)")
+            }
+    case "2":
+            shouldExit = true
+    default:
+        print("Неверный выбор. Пожалуйста, выберите 1 или 2.")
+    }
+    
+        
+    
+    
+
+    
 }
+
+
