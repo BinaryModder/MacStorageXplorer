@@ -32,7 +32,6 @@ class FileScanner
                 
                 
             }
-            
             return FileInfosArray.sorted {$0.size > $1.size}
             
         }catch {os_log("Error scanning directory: %{public}@", log: log, type: .error, error.localizedDescription)

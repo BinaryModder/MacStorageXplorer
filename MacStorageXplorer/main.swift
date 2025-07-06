@@ -1,9 +1,3 @@
-//
-//  main.swift
-//  MacStorageXplorer
-//
-//  Created by Moddeeeeeeep on 05.07.2025.
-//
 
 import Foundation
 
@@ -27,11 +21,50 @@ func colorForSize(_ size: Int64) -> String {
         return "\u{001B}[36m" // Голубой для небольших файлов
     }
 }
+func checkPermissions() {
+    print("Проверка прав доступа...")
+    
+    // Проверяем доступ к некоторым защищенным директориям
+    let testPaths = [
+        "/Library/Application Support",
+        "/System/Library",
+        "/Users/Shared"
+    ]
+    
+    var hasFullAccess = true
+    
+    for path in testPaths {
+        if FileManager.default.isReadableFile(atPath: path){
+            continue
+        } else {
+            hasFullAccess = false
+            break
+        }
+    }
+    
+    if !hasFullAccess {
+        print("\n⚠️  Внимание: Обнаружены ограничения доступа")
+        print("Для полного сканирования файловой системы необходим полный доступ к диску.")
+        print("Инструкция по предоставлению доступа:")
+        print("1. Откройте Системные настройки > Конфиденциальность и безопасность > Полный доступ к диску")
+        print("2. Нажмите '+' и добавьте это приложение")
+        print("3. Перезапустите приложение после предоставления доступа\n")
+    } else {
+        print("✅ Доступ к файловой системе получен")
+    }
+}
 
 // Сброс цвета
 let resetColor = "\u{001B}[0m"
 
 
+
+
+
+
+checkPermissions()
+
+//Основной цикл программы 
 var shouldExit = false
 
 while(!shouldExit)
@@ -49,9 +82,9 @@ while(!shouldExit)
             if CommandLine.arguments.count > 1 {
                 path = CommandLine.arguments[1]
             } else {
-                print("Введите путь к директории для сканирования (нажмите Enter для текущей директории):")
+                print("Введите путь к директории для сканирования (нажмите Enter для вашей домашней директории):", terminator: "")
                 let input = readLine() ?? ""
-                path = input.isEmpty ? "/Users/Documents" : input
+                path = input.isEmpty ? FileManager.default.homeDirectoryForCurrentUser.path : input
             }
 
         // Проверяем существование пути
