@@ -7,4 +7,9 @@
 
 import Foundation
 
-print("Hello, World!")
+func formatFileSize(_ size: Int64) -> String {
+        let byteCountFormatter = ByteCountFormatter()
+        byteCountFormatter.allowedUnits = [.useMB, .useGB, .useTB]
+        byteCountFormatter.countStyle = .file
+        return byteCountFormatter.string(fromByteCount: size)
+}
