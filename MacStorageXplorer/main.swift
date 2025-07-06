@@ -6,5 +6,5 @@
 //
 
 import Foundation
-Int lol = 0
+
 print("Hello, World!")
